@@ -1,0 +1,13 @@
+{
+  "name": "Delivery Ledger",
+  "short_name": "Ledger",
+  "description": "Track deliveries, tips and expenses. See what you really earn per hour.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#0e0f0c",
+  "theme_color": "#0e0f0c",
+  "icons": [
+    { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}

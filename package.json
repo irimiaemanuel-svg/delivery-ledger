@@ -1,0 +1,12 @@
+{
+  "name": "delivery-ledger",
+  "version": "1.0.0",
+  "description": "Offline-first tracker for delivery drivers: deliveries, tips, expenses and real profit per hour.",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "start": "npx --yes serve -l 3000 .",
+    "test": "node --test"
+  },
+  "license": "MIT"
+}

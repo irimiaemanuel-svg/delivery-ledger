@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Delivery Ledger</title>
+  <meta name="description" content="Track deliveries, tips and expenses. See what you really earn per hour." />
+  <meta name="theme-color" content="#0e0f0c" />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="icon" href="icon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="icon.svg" />
+  <link rel="stylesheet" href="src/style.css" />
+</head>
+<body>
+  <header class="top">
+    <div class="brand"><span class="logo" aria-hidden="true"></span>Delivery Ledger</div>
+    <div class="top-net" id="topNet" aria-live="polite"></div>
+  </header>
+
+  <main>
+    <!-- TODAY -->
+    <section id="view-today" class="view" data-view="today">
+      <div class="card shift" id="shiftCard"></div>
+
+      <form class="card" id="deliveryForm" autocomplete="off">
+        <h2>New delivery</h2>
+        <div class="chips" id="platformChips" role="radiogroup" aria-label="Platform"></div>
+        <div class="grid3">
+          <label>Pay<input name="pay" inputmode="decimal" placeholder="0" required /></label>
+          <label>Tip<input name="tip" inputmode="decimal" placeholder="0" /></label>
+          <label>Km<input name="km" inputmode="decimal" placeholder="—" /></label>
+        </div>
+        <button class="btn primary big" type="submit">Add delivery</button>
+      </form>
+
+      <details class="card" id="expenseBox">
+        <summary><h2>Add expense</h2><span class="hint">fuel, food, parking…</span></summary>
+        <form id="expenseForm" autocomplete="off">
+          <div class="chips" id="expenseChips" role="radiogroup" aria-label="Category"></div>
+          <div class="row">
+            <label class="grow">Amount<input name="amount" inputmode="decimal" placeholder="0" required /></label>
+            <button class="btn" type="submit">Add</button>
+          </div>
+        </form>
+      </details>
+
+      <div class="card">
+        <div class="kpis small" id="todayKpis"></div>
+      </div>
+
+      <div class="card">
+        <h2>Today’s log</h2>
+        <ul class="log" id="todayLog"></ul>
+      </div>
+    </section>
+
+    <!-- STATS -->
+    <section id="view-stats" class="view" data-view="stats" hidden>
+      <div class="seg" id="periodSeg" role="tablist">
+        <button data-period="today">Today</button>
+        <button data-period="week">Week</button>
+        <button data-period="month">Month</button>
+        <button data-period="all">All</button>
+      </div>
+      <div class="card hero" id="statsHero"></div>
+      <div class="card"><div class="kpis" id="statsKpis"></div></div>
+      <div class="card">
+        <h2 id="chartTitle">Net per day</h2>
+        <div id="chart" class="chart"></div>
+      </div>
+      <div class="card">
+        <h2>By platform</h2>
+        <div id="platforms"></div>
+      </div>
+    </section>
+
+    <!-- SETTINGS -->
+    <section id="view-settings" class="view" data-view="settings" hidden>
+      <form class="card" id="settingsForm">
+        <h2>Settings</h2>
+        <label>Currency<input name="currency" maxlength="3" placeholder="RON" /></label>
+        <label>Platforms <span class="hint">comma separated</span><input name="platforms" /></label>
+        <label>Expense categories <span class="hint">comma separated</span><input name="categories" /></label>
+        <button class="btn primary" type="submit">Save</button>
+      </form>
+      <div class="card">
+        <h2>Your data</h2>
+        <p class="hint">Everything stays on this device. Export a backup now and then.</p>
+        <div class="stack">
+          <button class="btn" id="exportCsv">Export CSV (for Excel)</button>
+          <button class="btn" id="exportJson">Download backup</button>
+          <label class="btn file">Restore backup<input type="file" id="importJson" accept="application/json" hidden /></label>
+          <button class="btn danger" id="wipe">Delete all data</button>
+        </div>
+      </div>
+      <p class="foot">Delivery Ledger · open source · works offline</p>
+    </section>
+  </main>
+
+  <nav class="tabs" aria-label="Sections">
+    <button data-tab="today" aria-current="page"><span>●</span>Today</button>
+    <button data-tab="stats"><span>▮</span>Stats</button>
+    <button data-tab="settings"><span>⚙</span>Settings</button>
+  </nav>
+
+  <div class="toast" id="toast" role="status" hidden></div>
+
+  <script type="module" src="src/app.js"></script>
+</body>
+</html>
