@@ -26,7 +26,7 @@ I built it for my own delivery business in Iași, Romania, where I drive shifts 
 
 ## Try it
 
-**Live:** `https://<your-username>.github.io/delivery-ledger/`
+**Live:** `https://irimiaemanuel-svg.github.io/delivery-ledger/`
 
 On your phone, open the link and choose **Add to Home Screen**. It then works like a normal app, with or without signal.
 
@@ -35,7 +35,7 @@ On your phone, open the link and choose **Add to Home Screen**. It then works li
 No build step and no dependencies. Plain HTML, CSS and JavaScript modules.
 
 ```bash
-git clone https://github.com/<your-username>/delivery-ledger.git
+git clone https://github.com/irimiaemanuel-svg/delivery-ledger.git
 cd delivery-ledger
 npm start      # serves on http://localhost:3000
 npm test       # runs the unit tests (Node 20+)
